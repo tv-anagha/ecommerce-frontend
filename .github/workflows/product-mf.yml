@@ -9,10 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: product-mf
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v5
@@ -28,3 +24,12 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Install Linux Rolldown binding
+        run: npm install --no-save @rolldown/binding-linux-x64-gnu -w product-mf
+
+      - name: Build
+        run: npm run build -w product-mf  
+
+      - name: Install Dependencies
+        un: npm ci -w product-mf
