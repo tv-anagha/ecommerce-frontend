@@ -23,8 +23,5 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Install Linux Rolldown binding
-        run: npm install --no-save @rolldown/binding-linux-x64-gnu -w product-mf
-
       - name: Build
         run: npm run build -w product-mf
