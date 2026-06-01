@@ -1,0 +1,16 @@
+{
+  "name": "ecommerce-frontend",
+  "private": true,
+  "workspaces": [
+    "product-mf"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w product-mf",
+    "build": "npm run build -w product-mf",
+    "lint": "npm run lint -w product-mf",
+    "preview": "npm run preview -w product-mf"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
