@@ -2,13 +2,22 @@
   "name": "ecommerce-frontend",
   "private": true,
   "workspaces": [
-    "product-mf"
+    "shell",
+    "product-mf",
+    "user-mf"
   ],
   "scripts": {
-    "dev": "npm run dev -w product-mf",
-    "build": "npm run build -w product-mf",
-    "lint": "npm run lint -w product-mf",
-    "preview": "npm run preview -w product-mf"
+    "dev": "npm run dev -w shell",
+    "dev:shell": "npm run dev -w shell",
+    "dev:user": "npm run dev -w user-mf",
+    "dev:product": "npm run dev -w product-mf",
+    "dev:all": "concurrently -n product,user -c blue,green \"npm run dev -w product-mf\" \"npm run dev -w user-mf\"",
+    "build": "npm run build -w shell",
+    "lint": "npm run lint --workspaces --if-present",
+    "preview": "npm run preview -w shell"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   },
   "engines": {
     "node": ">=20"

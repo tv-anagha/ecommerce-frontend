@@ -1,0 +1,76 @@
+.user-auth {
+  min-height: 100vh;
+  background: #eaeded;
+}
+
+.user-auth__header {
+  background: #131921;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+}
+
+.user-auth__header-inner {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-auth__logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff9900;
+  text-transform: lowercase;
+}
+
+.user-auth__tagline {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.user-auth__main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem 3rem;
+}
+
+.user-auth__card {
+  width: 100%;
+  max-width: 420px;
+  padding: 1.5rem 1.75rem 1.75rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.user-auth__success h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+  color: #0f1111;
+}
+
+.user-auth__email {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: #0f1111;
+}
+
+.user-auth__meta {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  color: #565959;
+}
+
+.user-auth__sign-out {
+  padding: 0.45rem 1rem;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  background: #f0f2f2;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.user-auth__sign-out:hover {
+  background: #e3e6e6;
+}

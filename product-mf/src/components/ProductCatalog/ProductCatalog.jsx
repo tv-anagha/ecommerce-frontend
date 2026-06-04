@@ -1,13 +1,20 @@
+import { useEffect } from "react";
 import { useProducts } from "../../hooks/useProducts.js";
 import { ProductGrid } from "../ProductGrid/ProductGrid.jsx";
 import "./ProductCatalog.css";
 
 /**
  * Root UI for the product microfrontend.
- * A shell app can import and mount this component via Module Federation later.
+ * Shell mounts this after authentication with autoLoad.
  */
-export function ProductCatalog() {
+export function ProductCatalog({ user, onSignOut, autoLoad = false }) {
   const { products, loading, error, loadProducts } = useProducts();
+
+  useEffect(() => {
+    if (autoLoad) {
+      loadProducts();
+    }
+  }, [autoLoad, loadProducts]);
 
   const handleAddToCart = (product) => {
     // Cart MFE will handle this in a later sprint
@@ -20,6 +27,24 @@ export function ProductCatalog() {
         <div className="product-catalog__header-inner">
           <span className="product-catalog__logo">shop</span>
           <h1 className="product-catalog__title">Product Catalog</h1>
+          {(user?.email || onSignOut) && (
+            <div className="product-catalog__header-actions">
+              {user?.email && (
+                <span className="product-catalog__user">
+                  Hello, {user.email}
+                </span>
+              )}
+              {onSignOut && (
+                <button
+                  type="button"
+                  className="product-catalog__sign-out"
+                  onClick={onSignOut}
+                >
+                  Sign out
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </header>
 

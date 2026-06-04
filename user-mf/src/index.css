@@ -1,0 +1,20 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Amazon Ember", "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #0f1111;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+}
