@@ -47,7 +47,9 @@ export function ProductCatalog() {
           <div className="product-catalog__error" role="alert">
             {error}
             <span className="product-catalog__error-hint">
-              Ensure the backend is running and CORS allows this origin.
+              Ensure the product microservice is running on port 8081 (GET /products)
+              and CORS allows this origin, or use Vite proxy with an empty{" "}
+              <code>VITE_API_BASE_URL</code>.
             </span>
           </div>
         )}
