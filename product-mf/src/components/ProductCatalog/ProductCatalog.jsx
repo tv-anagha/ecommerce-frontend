@@ -47,9 +47,9 @@ export function ProductCatalog() {
           <div className="product-catalog__error" role="alert">
             {error}
             <span className="product-catalog__error-hint">
-              Ensure the product microservice is running on port 8081 (GET /products)
-              and CORS allows this origin, or use Vite proxy with an empty{" "}
-              <code>VITE_API_BASE_URL</code>.
+              Product service: <code>http://localhost:8081/products</code>. In dev, keep{" "}
+              <code>VITE_API_BASE_URL</code> empty and restart <code>npm run dev</code>{" "}
+              so Vite proxies <code>/api/products</code> → port 8081.
             </span>
           </div>
         )}

@@ -13,7 +13,9 @@ export async function fetchProducts() {
   const res = await fetch(productsUrl());
 
   if (!res.ok) {
-    throw new Error(`Failed to load products (${res.status})`);
+    throw new Error(
+      `Failed to load products (${res.status}) from ${productsUrl()}`,
+    );
   }
 
   const data = await res.json();

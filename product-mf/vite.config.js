@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // Dev: /api/products → product microservice on 8081
+      // /api/products → http://localhost:8081/products
       '/api': {
         target: 'http://localhost:8081',
         changeOrigin: true,
