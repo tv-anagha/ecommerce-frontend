@@ -1,0 +1,126 @@
+.product-catalog {
+  min-height: 100vh;
+  background: #eaeded;
+}
+
+.product-catalog__header {
+  background: #131921;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+}
+
+.product-catalog__header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.product-catalog__logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff9900;
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+}
+
+.product-catalog__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #ccc;
+}
+
+.product-catalog__main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+.product-catalog__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+}
+
+.product-catalog__section-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f1111;
+}
+
+.product-catalog__count {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: #565959;
+}
+
+.product-catalog__load-btn {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #fcd200;
+  border-radius: 8px;
+  background: #ffd814;
+  color: #0f1111;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+
+.product-catalog__load-btn:hover:not(:disabled) {
+  background: #f7ca00;
+}
+
+.product-catalog__load-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.product-catalog__error {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: #fff4f4;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  color: #b12704;
+  font-size: 0.9rem;
+}
+
+.product-catalog__error-hint {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: #565959;
+}
+
+.product-catalog__skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.product-catalog__skeleton-card {
+  height: 380px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: product-catalog-shimmer 1.2s infinite;
+  border-radius: 4px;
+}
+
+@keyframes product-catalog-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

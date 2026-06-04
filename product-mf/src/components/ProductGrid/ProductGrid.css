@@ -1,0 +1,33 @@
+.product-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.product-grid__item {
+  min-width: 0;
+}
+
+.product-grid__empty {
+  text-align: center;
+  color: #565959;
+  padding: 3rem 1rem;
+  background: #fff;
+  border: 1px dashed #d5d9d9;
+  border-radius: 4px;
+}
+
+@media (min-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
