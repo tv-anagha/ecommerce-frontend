@@ -4,7 +4,8 @@
   "workspaces": [
     "shell",
     "product-mf",
-    "user-mf"
+    "user-mf",
+    "cart-mf"
   ],
   "scripts": {
     "dev": "npm run dev -w shell",

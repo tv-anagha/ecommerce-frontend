@@ -5,9 +5,28 @@ import "./ProductCatalog.css";
 
 /**
  * Root UI for the product microfrontend.
- * Shell mounts this after authentication with autoLoad.
+ * Shell mounts this after authentication and wires cart state from cart-mf.
  */
-export function ProductCatalog({ user, onSignOut, autoLoad = false }) {
+export function ProductCatalog({
+  user,
+  onSignOut,
+  autoLoad = false,
+  cartCount = 0,
+  cartLoading = false,
+  cartError = "",
+  onClearCartError,
+  onAddToCart,
+  addingProductId = null,
+  CartBadge,
+  onOpenCart,
+  CartPanel,
+  cartItems = [],
+  cartPanelOpen = false,
+  onCloseCart,
+  onRemoveFromCart,
+  removingProductId = null,
+  onCheckout,
+}) {
   const { products, loading, error, loadProducts } = useProducts();
 
   useEffect(() => {
@@ -16,17 +35,21 @@ export function ProductCatalog({ user, onSignOut, autoLoad = false }) {
     }
   }, [autoLoad, loadProducts]);
 
-  const handleAddToCart = (product) => {
-    // Cart MFE will handle this in a later sprint
-    console.info("[product-mf] Add to cart:", product.id ?? product.name);
-  };
-
   return (
     <div className="product-catalog">
       <header className="product-catalog__header">
         <div className="product-catalog__header-inner">
           <span className="product-catalog__logo">shop</span>
           <h1 className="product-catalog__title">Product Catalog</h1>
+          {CartBadge && (
+            <div className="product-catalog__cart">
+              <CartBadge
+                count={cartCount}
+                loading={cartLoading}
+                onClick={onOpenCart}
+              />
+            </div>
+          )}
           {(user?.email || onSignOut) && (
             <div className="product-catalog__header-actions">
               {user?.email && (
@@ -48,7 +71,35 @@ export function ProductCatalog({ user, onSignOut, autoLoad = false }) {
         </div>
       </header>
 
+      {CartPanel && (
+        <CartPanel
+          isOpen={cartPanelOpen}
+          items={cartItems}
+          products={products}
+          loading={cartLoading}
+          removingProductId={removingProductId}
+          onClose={onCloseCart}
+          onRemove={onRemoveFromCart}
+          onCheckout={onCheckout}
+        />
+      )}
+
       <main className="product-catalog__main">
+        {cartError && (
+          <div className="product-catalog__cart-error" role="alert">
+            {cartError}
+            {onClearCartError && (
+              <button
+                type="button"
+                className="product-catalog__cart-error-dismiss"
+                onClick={onClearCartError}
+              >
+                Dismiss
+              </button>
+            )}
+          </div>
+        )}
+
         <section className="product-catalog__toolbar">
           <div>
             <h2 className="product-catalog__section-title">Results</h2>
@@ -72,9 +123,7 @@ export function ProductCatalog({ user, onSignOut, autoLoad = false }) {
           <div className="product-catalog__error" role="alert">
             {error}
             <span className="product-catalog__error-hint">
-              Product service: <code>http://localhost:8081/products</code>. In dev, keep{" "}
-              <code>VITE_API_BASE_URL</code> empty and restart <code>npm run dev</code>{" "}
-              so Vite proxies <code>/api/products</code> → port 8081.
+              Product service: <code>http://localhost:8081/products</code>.
             </span>
           </div>
         )}
@@ -88,7 +137,8 @@ export function ProductCatalog({ user, onSignOut, autoLoad = false }) {
         ) : (
           <ProductGrid
             products={products}
-            onAddToCart={handleAddToCart}
+            onAddToCart={onAddToCart}
+            addingProductId={addingProductId}
             emptyMessage="Click “Load Products” to fetch from your product service."
           />
         )}

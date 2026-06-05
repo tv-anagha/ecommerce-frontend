@@ -20,7 +20,7 @@ function StarRating({ rating = 0, reviewCount }) {
   );
 }
 
-export function ProductCard({ product, onAddToCart }) {
+export function ProductCard({ product, onAddToCart, addingProductId }) {
   const {
     id,
     name,
@@ -36,6 +36,8 @@ export function ProductCard({ product, onAddToCart }) {
   } = product;
 
   const displayName = name ?? title ?? "Untitled product";
+  const isAdding =
+    addingProductId != null && String(addingProductId) === String(id);
   const discount =
     originalPrice && price && originalPrice > price
       ? Math.round(((originalPrice - price) / originalPrice) * 100)
@@ -90,10 +92,14 @@ export function ProductCard({ product, onAddToCart }) {
         <button
           type="button"
           className="product-card__cta"
-          disabled={!inStock}
+          disabled={!inStock || isAdding}
           onClick={() => onAddToCart?.(product)}
         >
-          {inStock ? "Add to Cart" : "Out of Stock"}
+          {!inStock
+            ? "Out of Stock"
+            : isAdding
+              ? "Adding…"
+              : "Add to Cart"}
         </button>
       </div>
     </article>

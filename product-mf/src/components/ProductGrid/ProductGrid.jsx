@@ -1,7 +1,12 @@
 import { ProductCard } from "../ProductCard/ProductCard.jsx";
 import "./ProductGrid.css";
 
-export function ProductGrid({ products, onAddToCart, emptyMessage }) {
+export function ProductGrid({
+  products,
+  onAddToCart,
+  addingProductId,
+  emptyMessage,
+}) {
   if (!products?.length) {
     return (
       <p className="product-grid__empty" role="status">
@@ -14,7 +19,11 @@ export function ProductGrid({ products, onAddToCart, emptyMessage }) {
     <ul className="product-grid" role="list">
       {products.map((product) => (
         <li key={product.id ?? product.sku ?? product.name} className="product-grid__item">
-          <ProductCard product={product} onAddToCart={onAddToCart} />
+          <ProductCard
+            product={product}
+            onAddToCart={onAddToCart}
+            addingProductId={addingProductId}
+          />
         </li>
       ))}
     </ul>

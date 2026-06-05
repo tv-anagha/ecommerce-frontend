@@ -11,6 +11,7 @@ export default defineConfig({
     alias: {
       "@product-mf": path.resolve(dir, "../product-mf/src"),
       "@user-mf": path.resolve(dir, "../user-mf/src"),
+      "@cart-mf": path.resolve(dir, "../cart-mf/src"),
     },
   },
   server: {
@@ -28,6 +29,11 @@ export default defineConfig({
       },
       "/api/register": {
         target: "http://localhost:8082",
+        changeOrigin: true,
+        rewrite: (p) => p.replace(/^\/api/, ""),
+      },
+      "/api/carts": {
+        target: "http://localhost:8083",
         changeOrigin: true,
         rewrite: (p) => p.replace(/^\/api/, ""),
       },
