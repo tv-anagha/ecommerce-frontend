@@ -1,0 +1,118 @@
+.order-confirm {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.order-confirm__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(15, 17, 17, 0.6);
+  cursor: pointer;
+}
+
+.order-confirm__card {
+  position: relative;
+  width: min(480px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 8px 32px rgba(15, 17, 17, 0.25);
+  text-align: center;
+}
+
+.order-confirm__success-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: #067d62;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 3rem;
+}
+
+.order-confirm__card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  color: #0f1111;
+}
+
+.order-confirm__meta {
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+  color: #565959;
+}
+
+.order-confirm__items {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  text-align: left;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.order-confirm__items li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.5rem 1rem;
+  padding: 0.65rem 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-confirm__items li:last-child {
+  border-bottom: none;
+}
+
+.order-confirm__item-name {
+  color: #0f1111;
+}
+
+.order-confirm__item-qty {
+  color: #565959;
+}
+
+.order-confirm__item-price {
+  font-weight: 600;
+  color: #b12704;
+  white-space: nowrap;
+}
+
+.order-confirm__total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: #0f1111;
+}
+
+.order-confirm__note {
+  margin: 0 0 1.25rem;
+  font-size: 0.8rem;
+  color: #565959;
+}
+
+.order-confirm__done {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #fcd200;
+  border-radius: 8px;
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.order-confirm__done:hover {
+  background: linear-gradient(to bottom, #f5d78e, #eeb933);
+}

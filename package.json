@@ -5,7 +5,8 @@
     "shell",
     "product-mf",
     "user-mf",
-    "cart-mf"
+    "cart-mf",
+    "order-mf"
   ],
   "scripts": {
     "dev": "npm run dev -w shell",

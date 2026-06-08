@@ -12,6 +12,7 @@ export default defineConfig({
       "@product-mf": path.resolve(dir, "../product-mf/src"),
       "@user-mf": path.resolve(dir, "../user-mf/src"),
       "@cart-mf": path.resolve(dir, "../cart-mf/src"),
+      "@order-mf": path.resolve(dir, "../order-mf/src"),
     },
   },
   server: {
@@ -34,6 +35,11 @@ export default defineConfig({
       },
       "/api/carts": {
         target: "http://localhost:8083",
+        changeOrigin: true,
+        rewrite: (p) => p.replace(/^\/api/, ""),
+      },
+      "/api/orders": {
+        target: "http://localhost:8084",
         changeOrigin: true,
         rewrite: (p) => p.replace(/^\/api/, ""),
       },

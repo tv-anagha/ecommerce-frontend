@@ -8,6 +8,8 @@ export function CartPanel({
   products = [],
   loading = false,
   removingProductId = null,
+  checkoutLoading = false,
+  checkoutError = "",
   onClose,
   onRemove,
   onCheckout,
@@ -101,6 +103,11 @@ export function CartPanel({
         </div>
 
         <footer className="cart-panel__footer">
+          {checkoutError && (
+            <p className="cart-panel__checkout-error" role="alert">
+              {checkoutError}
+            </p>
+          )}
           <div className="cart-panel__subtotal">
             <span>
               Subtotal ({totalQuantity}{" "}
@@ -111,10 +118,10 @@ export function CartPanel({
           <button
             type="button"
             className="cart-panel__checkout"
-            disabled={enriched.length === 0 || loading}
+            disabled={enriched.length === 0 || loading || checkoutLoading}
             onClick={onCheckout}
           >
-            Proceed to Checkout
+            {checkoutLoading ? "Placing order…" : "Proceed to Checkout"}
           </button>
         </footer>
       </aside>

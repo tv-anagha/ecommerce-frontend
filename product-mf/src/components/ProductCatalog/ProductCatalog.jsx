@@ -26,6 +26,8 @@ export function ProductCatalog({
   onRemoveFromCart,
   removingProductId = null,
   onCheckout,
+  checkoutLoading = false,
+  checkoutError = "",
 }) {
   const { products, loading, error, loadProducts } = useProducts();
 
@@ -78,6 +80,8 @@ export function ProductCatalog({
           products={products}
           loading={cartLoading}
           removingProductId={removingProductId}
+          checkoutLoading={checkoutLoading}
+          checkoutError={checkoutError}
           onClose={onCloseCart}
           onRemove={onRemoveFromCart}
           onCheckout={onCheckout}
